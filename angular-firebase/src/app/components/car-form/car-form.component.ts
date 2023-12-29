@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { CarService } from 'src/app/services/car.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-car-form',
@@ -19,7 +20,7 @@ export class CarFormComponent implements OnInit, OnDestroy {
     subSaveCar?: Subscription;
     message: string = '';
 
-    constructor(private carService: CarService) {}
+    constructor(private carService: CarService, private router: Router) {}
 
     ngOnInit(): void {
         this.carForm = new FormGroup({
@@ -93,6 +94,7 @@ export class CarFormComponent implements OnInit, OnDestroy {
             },
         });
         this.carForm.reset();
+        this.router.navigate(['/car-list']);
     }
 
     brandNameValidator(control: AbstractControl): ValidationErrors | null {
