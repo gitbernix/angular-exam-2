@@ -4,6 +4,7 @@ import {
     FormControl,
     FormGroup,
     ValidationErrors,
+    ValidatorFn,
     Validators,
 } from '@angular/forms';
 import { Subscription } from 'rxjs';
@@ -19,6 +20,19 @@ export class MovieFormComponent implements OnInit, OnDestroy {
     subSaveMovie?: Subscription;
     message: string = '';
 
+    genresOptions: { key: string; value: string }[] = [
+        { key: 'SCI-FI', value: 'Sci-fi' },
+        { key: 'COMEDY', value: 'Comedy' },
+        { key: 'THRILLER', value: 'Thriller' },
+        { key: 'FANTASY', value: 'Fantasy' },
+        { key: 'DRAMA', value: 'Drama' },
+        { key: 'CRIME', value: 'Crime' },
+        { key: 'ADVENTURE', value: 'Adventure' },
+        { key: 'HORROR', value: 'Horror' },
+        { key: 'ACTION', value: 'Action' },
+        { key: 'OTHER', value: 'Other' },
+    ];
+
     constructor(private movieService: MovieService) {}
 
     ngOnInit(): void {
@@ -26,30 +40,52 @@ export class MovieFormComponent implements OnInit, OnDestroy {
             title: new FormControl('', [
                 Validators.required,
                 Validators.minLength(2),
-                // this.brandNameValidator,
+                Validators.maxLength(30),
             ]),
-            genres: new FormControl('', [
+            director: new FormControl('', [
                 Validators.required,
                 Validators.minLength(2),
+                Validators.maxLength(30),
+                // Validators.pattern(/^[a-zA-Z]{3,20}$/), //pattern validátor, csak betűk lehetnek, 3-20 karakterhosszúságban
             ]),
-            releaseDate: new FormControl('', [
+            duration: new FormControl(null, [
                 Validators.required,
-                Validators.min(1900),
-                Validators.max(2024),
+                Validators.min(10),
+                Validators.max(350),
             ]),
+            genres: new FormControl(''),
+
+            releaseDate: new FormControl(null, [
+                Validators.required,
+                Validators.min(1970),
+                Validators.max(2023),
+            ]),
+
             description: new FormControl('', [
                 Validators.required,
-                Validators.minLength(2),
+                Validators.minLength(20),
+                Validators.maxLength(800),
+                this.pornValidator(),
             ]),
+
             country: new FormControl('', [
                 Validators.required,
                 Validators.minLength(2),
+                Validators.maxLength(25),
             ]),
         });
     }
 
     get title() {
         return this.movieForm.get('title');
+    }
+
+    get director() {
+        return this.movieForm.get('director');
+    }
+
+    get duration() {
+        return this.movieForm.get('duration');
     }
 
     get genres() {
@@ -105,6 +141,14 @@ export class MovieFormComponent implements OnInit, OnDestroy {
 
     //     return null;
     // }
+
+    //Egyedi validátor:
+    pornValidator(): ValidatorFn {
+        return (control: AbstractControl): ValidationErrors | null => {
+            const hasPorn = (control.value as string).match(/porn/i);
+            return hasPorn ? { customError: { value: control.value } } : null;
+        };
+    }
 
     ngOnDestroy(): void {
         if (this.subSaveMovie) {
