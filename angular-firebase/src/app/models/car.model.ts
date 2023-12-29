@@ -6,4 +6,5 @@ export interface CarModel {
     country: string;
     damaged: boolean;
     color: string;
+    isNew?: boolean;
 }

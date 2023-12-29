@@ -68,6 +68,7 @@ export class CarService {
                 const resultList = snapshot.docs.map((doc) => {
                     const carData: CarModel = doc.data() as CarModel;
                     carData.id = doc.id;
+                    carData.isNew = true; //ez a sor az új tulajdonság hozzáadása, ha szükséges
                     return carData;
                 });
                 return resultList;
