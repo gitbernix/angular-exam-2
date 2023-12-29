@@ -94,7 +94,7 @@ export class CarFormComponent implements OnInit, OnDestroy {
             },
         });
         this.carForm.reset();
-        this.router.navigate(['/car-list']);
+        // this.router.navigate(['/car-list']); -ez rögtön átvisz a listázó oldalra
     }
 
     brandNameValidator(control: AbstractControl): ValidationErrors | null {
