@@ -20,6 +20,7 @@ import { CarListComponent } from './components/car-list/car-list.component';
 import { CarFormComponent } from './components/car-form/car-form.component';
 import { MovieListComponent } from './components/movie-list/movie-list.component';
 import { MovieFormComponent } from './components/movie-form/movie-form.component';
+import { ListComponent } from './components/list/list.component';
 
 @NgModule({
     declarations: [
@@ -31,6 +32,7 @@ import { MovieFormComponent } from './components/movie-form/movie-form.component
         CarFormComponent,
         MovieListComponent,
         MovieFormComponent,
+        ListComponent,
     ],
     imports: [
         BrowserModule,
