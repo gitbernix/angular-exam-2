@@ -31,11 +31,7 @@
                         formControlName="director"
                     />
                     <small
-                        *ngIf="
-                            director?.dirty &&
-                            director?.invalid &&
-                            director?.errors
-                        "
+                        *ngIf="director?.dirty && director?.invalid"
                         class="text-danger"
                         >Min 3, max 20 characters, and no numbers!</small
                     >

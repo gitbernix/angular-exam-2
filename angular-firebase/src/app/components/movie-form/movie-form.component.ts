@@ -44,9 +44,7 @@ export class MovieFormComponent implements OnInit, OnDestroy {
             ]),
             director: new FormControl('', [
                 Validators.required,
-                Validators.minLength(2),
-                Validators.maxLength(30),
-                // Validators.pattern(/^[a-zA-Z]{3,20}$/), //pattern validátor, csak betűk lehetnek, 3-20 karakterhosszúságban
+                this.directorValidator(),
             ]),
             duration: new FormControl(null, [
                 Validators.required,
@@ -126,27 +124,22 @@ export class MovieFormComponent implements OnInit, OnDestroy {
         this.movieForm.reset();
     }
 
-    // brandNameValidator(control: AbstractControl): ValidationErrors | null {
-    //     const controlValue = control.value as string;
-
-    //     if (controlValue != null) {
-    //         return controlValue.match(/trabant/i)
-    //             ? {
-    //                   brandName: {
-    //                       value: control.value + ' Error: contain trabant',
-    //                   },
-    //               }
-    //             : null;
-    //     }
-
-    //     return null;
-    // }
-
-    //Egyedi validátor:
+    //Egyedi validátorok:
     pornValidator(): ValidatorFn {
         return (control: AbstractControl): ValidationErrors | null => {
             const hasPorn = (control.value as string).match(/porn/i);
             return hasPorn ? { customError: { value: control.value } } : null;
+        };
+    }
+
+    directorValidator(): ValidatorFn {
+        return (control: AbstractControl): ValidationErrors | null => {
+            const value = control.value;
+            if (typeof value !== 'string') {
+                return { director: true };
+            }
+            const valid = value.match(/^[A-Za-z\s]{3,20}$/);
+            return valid ? null : { director: true };
         };
     }
 
