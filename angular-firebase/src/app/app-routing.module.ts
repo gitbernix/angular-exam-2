@@ -5,6 +5,7 @@ import { CarFormComponent } from './components/car-form/car-form.component';
 import { CarListComponent } from './components/car-list/car-list.component';
 import { MovieFormComponent } from './components/movie-form/movie-form.component';
 import { MovieListComponent } from './components/movie-list/movie-list.component';
+import { ListComponent } from './components/list/list.component';
 
 const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
     { path: 'car-list', component: CarListComponent },
     { path: 'movie-form', component: MovieFormComponent },
     { path: 'movie-list', component: MovieListComponent },
+    { path: 'merged-cars', component: ListComponent },
 ];
 
 @NgModule({

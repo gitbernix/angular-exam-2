@@ -1,1 +1,21 @@
-<p>list works!</p>
+<div class="container col-9">
+    <h3 class="text-center mt-4">Merged Car List</h3>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Type</th>
+                <th scope="col">Model</th>
+                <th scope="col">Year</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let car of mergedCars$ | async; index as i">
+                <td>{{ i + 1 }}</td>
+                <td>{{ car.type }}</td>
+                <td>{{ car.model }}</td>
+                <td>{{ car.year }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
