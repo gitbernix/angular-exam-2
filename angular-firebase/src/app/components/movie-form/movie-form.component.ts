@@ -127,7 +127,11 @@ export class MovieFormComponent implements OnInit, OnDestroy {
     //Egyedi validátorok:
     pornValidator(): ValidatorFn {
         return (control: AbstractControl): ValidationErrors | null => {
-            const hasPorn = (control.value as string).match(/porn/i);
+            const value = control.value;
+            if (typeof value !== 'string') {
+                return null;
+            }
+            const hasPorn = value.match(/porn/i);
             return hasPorn ? { customError: { value: control.value } } : null;
         };
     }
@@ -138,7 +142,7 @@ export class MovieFormComponent implements OnInit, OnDestroy {
             if (typeof value !== 'string') {
                 return { director: true };
             }
-            const valid = value.match(/^[A-Za-z\s]{3,20}$/);
+            const valid = value.match(/^[\p{L}\p{Zs}]{3,20}$/u);
             return valid ? null : { director: true };
         };
     }
