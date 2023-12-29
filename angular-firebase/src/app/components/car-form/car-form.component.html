@@ -1,1 +1,129 @@
-<p>car-form works!</p>
+<section class="container col-md-6 mt-5 shadow p-3">
+    <form [formGroup]="carForm">
+        <h3 class="mb-3">Car details</h3>
+        <div class="row">
+            <div class="container col-6">
+                <div class="mb-3">
+                    <label for="brand" class="form-label">Brand</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="brand"
+                        id="brand"
+                        placeholder="Brand..."
+                        formControlName="brand"
+                    />
+                    <small
+                        *ngIf="
+        brand?.invalid &&
+        brand?.dirty &&
+        !brand?.errors?.['brandName']
+      "
+                        class="text-danger"
+                        >Enter a brand!</small
+                    >
+                    <small
+                        *ngIf="
+        brand?.dirty &&
+        brand?.errors &&
+        brand?.errors?.['brandName']
+      "
+                        class="text-danger"
+                        >Nem lehet trabant márka</small
+                    >
+                </div>
+                <div class="mb-3">
+                    <label for="model" class="form-label">Model</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="model"
+                        id="model"
+                        placeholder="Model..."
+                        formControlName="model"
+                    />
+                    <small
+                        *ngIf="model?.invalid && model?.dirty"
+                        class="text-danger"
+                        >Enter a model!</small
+                    >
+                </div>
+                <div class="mb-3">
+                    <label for="year" class="form-label">Year</label>
+                    <input
+                        type="number"
+                        class="form-control"
+                        name="year"
+                        id="year"
+                        placeholder="Year"
+                        formControlName="year"
+                    />
+                    <small
+                        *ngIf="year?.invalid && year?.dirty"
+                        class="text-danger"
+                        >Enter a year!</small
+                    >
+                </div>
+            </div>
+
+            <div class="container col-6">
+                <div class="mb-3">
+                    <label for="country" class="form-label">Country</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="country"
+                        id="country"
+                        placeholder="Country..."
+                        formControlName="country"
+                    />
+                    <small
+                        *ngIf="country?.invalid && country?.dirty"
+                        class="text-danger"
+                        >Enter a country!</small
+                    >
+                </div>
+                <label for="inputdamaged" class="form-label"
+                    >Damaged status</label
+                >
+                <select
+                    id="inputdamaged"
+                    class="form-select mb-3"
+                    name="damaged"
+                    formControlName="damaged"
+                >
+                    <option value="false" selected>Undamaged</option>
+                    <option value="true">Damaged</option>
+                </select>
+                <div class="mb-3">
+                    <label for="color" class="form-label">Color</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="color"
+                        id="color"
+                        placeholder="Color..."
+                        formControlName="color"
+                    />
+                    <small
+                        *ngIf="color?.invalid && color?.dirty"
+                        class="text-danger"
+                        >Enter a color!</small
+                    >
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-2 mb-2">
+            <button
+                type="submit"
+                class="btn btn-success"
+                (click)="saveCar()"
+                [disabled]="carForm.invalid"
+            >
+                Submit
+            </button>
+            <p class="text-success mt-2">{{ message }}</p>
+        </div>
+    </form>
+</section>
