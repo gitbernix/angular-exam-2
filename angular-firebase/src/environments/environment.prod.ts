@@ -1,12 +1,12 @@
 export const environment = {
-  firebase: {
-    apiKey: 'AIzaSyBxQxRO7ef_sRQ4KZfI4LjomOBKGX03suQ',
-    authDomain: 'exam-practice-angular-firebase.firebaseapp.com',
-    projectId: 'exam-practice-angular-firebase',
-    storageBucket: 'exam-practice-angular-firebase.appspot.com',
-    messagingSenderId: '664298782718',
-    appId: '1:664298782718:web:14330598bbdd51dbd30aaf',
-    measurementId: 'G-RZN01Y107C',
-  },
-  production: true,
+    firebase: {
+        apiKey: 'AIzaSyAlMVcv2-xXsQnlUAa7zyrYuz5vXFjOKE4',
+        authDomain: 'angulargb.firebaseapp.com',
+        projectId: 'angulargb',
+        storageBucket: 'angulargb.appspot.com',
+        messagingSenderId: '564371797580',
+        appId: '1:564371797580:web:8a4b9ce9b85bb0353ea6e9',
+        measurementId: 'G-REQCXX81QF',
+    },
+    production: true,
 };
