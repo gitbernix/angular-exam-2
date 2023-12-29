@@ -26,7 +26,7 @@ export class MovieFormComponent implements OnInit, OnDestroy {
             title: new FormControl('', [
                 Validators.required,
                 Validators.minLength(2),
-                this.brandNameValidator,
+                // this.brandNameValidator,
             ]),
             genres: new FormControl('', [
                 Validators.required,
@@ -90,21 +90,21 @@ export class MovieFormComponent implements OnInit, OnDestroy {
         this.movieForm.reset();
     }
 
-    brandNameValidator(control: AbstractControl): ValidationErrors | null {
-        const controlValue = control.value as string;
+    // brandNameValidator(control: AbstractControl): ValidationErrors | null {
+    //     const controlValue = control.value as string;
 
-        if (controlValue != null) {
-            return controlValue.match(/trabant/i)
-                ? {
-                      brandName: {
-                          value: control.value + ' Error: contain trabant',
-                      },
-                  }
-                : null;
-        }
+    //     if (controlValue != null) {
+    //         return controlValue.match(/trabant/i)
+    //             ? {
+    //                   brandName: {
+    //                       value: control.value + ' Error: contain trabant',
+    //                   },
+    //               }
+    //             : null;
+    //     }
 
-        return null;
-    }
+    //     return null;
+    // }
 
     ngOnDestroy(): void {
         if (this.subSaveMovie) {

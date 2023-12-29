@@ -18,22 +18,31 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CarListComponent } from './components/car-list/car-list.component';
 import { CarFormComponent } from './components/car-form/car-form.component';
-import { MovieFormComponent } from './components/movie-form/movie-form.component';
 import { MovieListComponent } from './components/movie-list/movie-list.component';
+import { MovieFormComponent } from './components/movie-form/movie-form.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, FooterComponent, HeaderComponent, CarListComponent, CarFormComponent, MovieFormComponent, MovieListComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    FormsModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAuth(() => getAuth()),
-    provideFirestore(() => getFirestore()),
-    BrowserAnimationsModule,
-  ],
-  providers: [],
-  bootstrap: [AppComponent],
+    declarations: [
+        AppComponent,
+        HomeComponent,
+        FooterComponent,
+        HeaderComponent,
+        CarListComponent,
+        CarFormComponent,
+        MovieListComponent,
+        MovieFormComponent,
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        FormsModule,
+        provideFirebaseApp(() => initializeApp(environment.firebase)),
+        provideAuth(() => getAuth()),
+        provideFirestore(() => getFirestore()),
+        BrowserAnimationsModule,
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
 })
 export class AppModule {}
