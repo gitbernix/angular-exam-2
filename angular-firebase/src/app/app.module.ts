@@ -16,9 +16,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './components/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
+import { CarListComponent } from './components/car-list/car-list.component';
+import { CarFormComponent } from './components/car-form/car-form.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, FooterComponent, HeaderComponent],
+  declarations: [AppComponent, HomeComponent, FooterComponent, HeaderComponent, CarListComponent, CarFormComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
