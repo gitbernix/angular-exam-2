@@ -1,0 +1,122 @@
+<section class="container col-md-6 mt-5 shadow p-3">
+    <form [formGroup]="movieForm">
+        <h3 class="mb-3">Movie details</h3>
+        <div class="row">
+            <div class="container col-6">
+                <div class="mb-3">
+                    <label for="brand" class="form-label">Title</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="title"
+                        id="title"
+                        placeholder="Title..."
+                        formControlName="title"
+                    />
+                    <small
+                        *ngIf="
+        title?.invalid &&
+        title?.dirty &&
+        !title?.errors?.['titleName']
+      "
+                        class="text-danger"
+                        >Enter a title!</small
+                    >
+                    <small
+                        *ngIf="
+        title?.dirty &&
+        title?.errors &&
+        title?.errors?.['titleName']
+      "
+                        class="text-danger"
+                        >Nem lehet trabant a címe a filmnek</small
+                    >
+                </div>
+                <div class="mb-3">
+                    <label for="genres" class="form-label">Genres</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="genres"
+                        id="genres"
+                        placeholder="Genres..."
+                        formControlName="genres"
+                    />
+                    <small
+                        *ngIf="genres?.invalid && genres?.dirty"
+                        class="text-danger"
+                        >Enter a genre!</small
+                    >
+                </div>
+                <div class="mb-3">
+                    <label for="releaseDate" class="form-label"
+                        >Release Date</label
+                    >
+                    <input
+                        type="number"
+                        class="form-control"
+                        name="releaseDate"
+                        id="releaseDate"
+                        placeholder="Release Date"
+                        formControlName="releaseDate"
+                    />
+                    <small
+                        *ngIf="releaseDate?.invalid && releaseDate?.dirty"
+                        class="text-danger"
+                        >Enter a release date!</small
+                    >
+                </div>
+            </div>
+
+            <div class="container col-6">
+                <div class="mb-3">
+                    <label for="description" class="form-label"
+                        >Description</label
+                    >
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="description"
+                        id="description"
+                        placeholder="Description..."
+                        formControlName="description"
+                    />
+                    <small
+                        *ngIf="description?.invalid && description?.dirty"
+                        class="text-danger"
+                        >Enter a description!</small
+                    >
+                </div>
+
+                <div class="mb-3">
+                    <label for="country" class="form-label">Country</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="country"
+                        id="country"
+                        placeholder="Country..."
+                        formControlName="country"
+                    />
+                    <small
+                        *ngIf="country?.invalid && country?.dirty"
+                        class="text-danger"
+                        >Enter a country!</small
+                    >
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-2 mb-2">
+            <button
+                type="submit"
+                class="btn btn-success"
+                (click)="saveMovie()"
+                [disabled]="movieForm.invalid"
+            >
+                Submit
+            </button>
+            <p class="text-success mt-2">{{ message }}</p>
+        </div>
+    </form>
+</section>
