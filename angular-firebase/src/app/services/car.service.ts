@@ -10,7 +10,7 @@ import {
     getDocs,
     writeBatch,
 } from '@angular/fire/firestore';
-import { CarModel} from '../models/car.model';
+import { CarModel } from '../models/car.model';
 import { from, map, Observable } from 'rxjs';
 
 @Injectable({
@@ -57,7 +57,7 @@ export class CarService {
     }
 
     // SAVE
-    addCar(car: CarModel): Observable<DocumentData> {
+    saveCar(car: CarModel): Observable<DocumentData> {
         return from(addDoc(this.carCollectionRef, car));
     }
 

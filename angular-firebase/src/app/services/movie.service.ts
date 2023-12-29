@@ -5,10 +5,12 @@ import { data } from '../models/movies';
 import {
     addDoc,
     collection,
+    deleteDoc,
     doc,
     DocumentData,
     Firestore,
     getDocs,
+    updateDoc,
     writeBatch,
 } from '@angular/fire/firestore';
 
@@ -58,8 +60,20 @@ export class MovieService {
     }
 
     // SAVE
-    addMovie(movie: MovieModel): Observable<DocumentData> {
+    saveMovie(movie: MovieModel): Observable<DocumentData> {
         return from(addDoc(this.movieCollectionRef, movie));
+    }
+
+    //DELETE
+    deleteMovie(movieId: string): Observable<void> {
+        const movieDoc = doc(this.firestore, `movies/${movieId}`);
+        return from(deleteDoc(movieDoc));
+    }
+
+    // UPDATE
+    updateMovie(movieId: string, movie: Partial<MovieModel>): Observable<void> {
+        const movieDoc = doc(this.firestore, `movies/${movieId}`);
+        return from(updateDoc(movieDoc, movie));
     }
 
     // GETMovies

@@ -79,7 +79,7 @@ export class CarFormComponent implements OnInit, OnDestroy {
         }
         const carToSave = this.carForm.value;
         console.log(carToSave);
-        this.subSaveCar = this.carService.addCar(carToSave).subscribe({
+        this.subSaveCar = this.carService.saveCar(carToSave).subscribe({
             next: (docRef) => {
                 console.log('Car saved with id: ', docRef['id']);
                 this.message = 'Success! Your car has been submitted.';

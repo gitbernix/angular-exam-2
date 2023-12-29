@@ -74,7 +74,7 @@ export class MovieFormComponent implements OnInit, OnDestroy {
         }
         const movieToSave = this.movieForm.value;
         console.log(movieToSave);
-        this.subSaveMovie = this.movieService.addMovie(movieToSave).subscribe({
+        this.subSaveMovie = this.movieService.saveMovie(movieToSave).subscribe({
             next: (docRef) => {
                 console.log('Movie saved with id: ', docRef['id']);
                 this.message = 'Success! Your movie has been submitted.';
