@@ -21,7 +21,11 @@
                 <td>{{ movie.description }}</td>
                 <td>{{ movie.country }}</td>
                 <td>
-                    <button *ngIf="movie.id" (click)="deleteMovie(movie.id)">
+                    <button
+                        class="btn btn-info btn-sm"
+                        *ngIf="movie.id"
+                        (click)="deleteMovie(movie.id)"
+                    >
                         Delete
                     </button>
                 </td>

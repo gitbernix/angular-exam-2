@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { deleteDoc, doc } from '@angular/fire/firestore';
-import { Observable, from } from 'rxjs';
+import { Observable, from, map } from 'rxjs';
 import { MovieModel } from 'src/app/models/movie.model';
 import { MovieService } from 'src/app/services/movie.service';
 
@@ -25,7 +25,14 @@ export class MovieListComponent implements OnInit {
         });
     }
 
+    //.pipe utáni rész az évszám szerinti sorbarendezés
     ngOnInit(): void {
-        this.movies$ = this.movieService.getMovies();
+        this.movies$ = this.movieService
+            .getMovies()
+            .pipe(
+                map((movies) =>
+                    movies.sort((a, b) => a.releaseDate - b.releaseDate)
+                )
+            );
     }
 }
