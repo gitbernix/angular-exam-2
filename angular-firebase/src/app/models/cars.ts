@@ -1,4 +1,6 @@
-import { CarModel } from './car.model';
+import { CarModel} from './car.model';
+
+
 
 export const data: CarModel[] = [
   {

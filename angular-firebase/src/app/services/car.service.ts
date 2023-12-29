@@ -10,7 +10,7 @@ import {
     getDocs,
     writeBatch,
 } from '@angular/fire/firestore';
-import { CarModel } from '../models/car.model';
+import { CarModel} from '../models/car.model';
 import { from, map, Observable } from 'rxjs';
 
 @Injectable({
